@@ -1,5 +1,6 @@
 package com.epam.tc.hw1;
 
+import static org.assertj.core.api.Assertions.offset;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import com.epam.tat.module4.Calculator;
@@ -21,7 +22,7 @@ public class CalculatorCosTest {
     @Test(dataProvider = "cosDataProvider")
     public void calculatorCos(double a, double expected) {
         Calculator calculator = new Calculator();
-        double actual = Math.round(calculator.cos(a));
-        assertThat(actual).isEqualTo(expected);
+        double actual = calculator.cos(a);
+        assertThat(actual).isCloseTo(expected, offset(1E-10));
     }
 }

@@ -1,5 +1,6 @@
 package com.epam.tc.hw1;
 
+import static org.assertj.core.api.Assertions.offset;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import com.epam.tat.module4.Calculator;
@@ -20,7 +21,7 @@ public class CalculatorSinTest {
     @Test(dataProvider = "sinDataProvider")
     public void calculatorSin(double a, double expected) {
         Calculator calculator = new Calculator();
-        double actual = Math.round(calculator.sin(a));
-        assertThat(actual).isEqualTo(expected);
+        double actual = calculator.sin(a);
+        assertThat(actual).isCloseTo(expected, offset(1E-10));
     }
 }
