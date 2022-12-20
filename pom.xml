@@ -75,6 +75,12 @@
                 <suite.xml.file>Hw2Suite</suite.xml.file>
             </properties>
         </profile>
+        <profile>
+            <id>Hw3</id>
+            <properties>
+                <suite.xml.file>Hw3Suite</suite.xml.file>
+            </properties>
+        </profile>
     </profiles>
 
     <build>
@@ -108,7 +114,7 @@
                 <version>2.12.4</version>
                 <configuration>
                     <suiteXmlFiles>
-                        ${project.basedir}/src/test/resources/com.epam.tc.hw1/${suite.xml.file}.xml
+                        ${project.basedir}/src/test/resources/suites/${suite.xml.file}.xml
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
