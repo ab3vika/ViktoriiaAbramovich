@@ -8,6 +8,8 @@ import org.testng.annotations.Test;
 
 public class Exercise1Test extends BaseTest {
 
+    private static final int EXPECTED_IMAGES_COUNT = 4;
+
     @Test
     public void exercise1() {
 
@@ -34,7 +36,7 @@ public class Exercise1Test extends BaseTest {
 
         // 6. Assert that there are 4 images on the Index Page, and they are displayed
         softly.assertThat(indexPage.areBenefitIconsDisplayed()).as("Images display").isTrue();
-        softly.assertThat(indexPage.getBenefitIconsCount()).as("Images count").isEqualTo(4);
+        softly.assertThat(indexPage.getBenefitIconsCount()).as("Images count").isEqualTo(EXPECTED_IMAGES_COUNT);
 
         // 7. Assert that there are 4 texts on the Index Page under icons, and they have proper text
         List<String> actualBenefitTexts = indexPage.getBenefitTexts();
