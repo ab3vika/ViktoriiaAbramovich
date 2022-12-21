@@ -29,7 +29,7 @@ public class DifferentElementsPage extends AbstractPage {
         webDriver.findElement(By.xpath(String.format(OPTION_LOCATOR, value))).click();
     }
 
-    public LogsComponent logs() {
+    public LogsComponent getLogs() {
         return logsComponent;
     }
 }

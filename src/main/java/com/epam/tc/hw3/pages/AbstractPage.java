@@ -30,11 +30,11 @@ public class AbstractPage {
         webDriver.switchTo().defaultContent();
     }
 
-    public HeaderComponent header() {
+    public HeaderComponent getHeader() {
         return headerComponent;
     }
 
-    public LeftSectionComponent leftSection() {
+    public LeftSectionComponent getLeftSection() {
         return leftSectionComponent;
     }
 }

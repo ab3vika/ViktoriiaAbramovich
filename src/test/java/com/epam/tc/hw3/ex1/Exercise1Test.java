@@ -20,23 +20,24 @@ public class Exercise1Test extends BaseTest {
         indexPage.openSite(properties.getProperty("url"));
 
         // 2. Assert Browser title
-        softly.assertThat(indexPage.getTitle()).as("Browser title").isEqualTo("Home Page");
+        softly.assertThat(indexPage.getTitle()).as("Browser title is incorrect").isEqualTo("Home Page");
 
         // 3. Perform login
-        indexPage.header().performLogin(properties.getProperty("username"), properties.getProperty("password"));
+        indexPage.getHeader().performLogin(properties.getProperty("username"), properties.getProperty("password"));
 
         // 4. Assert Username is loggined
-        softly.assertThat(indexPage.header().getUserName()).as("Username").isEqualTo("ROMAN IOVLEV");
+        softly.assertThat(indexPage.getHeader().getUserName()).as("Username is incorrect").isEqualTo("ROMAN IOVLEV");
 
         // 5. Assert that there are 4 items on the header section are displayed, and they have proper texts
-        List<String> actualMenuButtons = indexPage.header().getMenuButtons();
+        List<String> actualMenuButtons = indexPage.getHeader().getMenuButtons();
         List<String> expectedMenuButtons = List.of("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
-        softly.assertThat(indexPage.header().areMenuButtonsDisplayed()).as("Header items display").isTrue();
-        softly.assertThat(actualMenuButtons).as("Header items").isEqualTo(expectedMenuButtons);
+        softly.assertThat(indexPage.getHeader().areMenuButtonsDisplayed()).as("Header items aren't displayed").isTrue();
+        softly.assertThat(actualMenuButtons).as("Header items are incorrect").isEqualTo(expectedMenuButtons);
 
         // 6. Assert that there are 4 images on the Index Page, and they are displayed
-        softly.assertThat(indexPage.areBenefitIconsDisplayed()).as("Images display").isTrue();
-        softly.assertThat(indexPage.getBenefitIconsCount()).as("Images count").isEqualTo(EXPECTED_IMAGES_COUNT);
+        softly.assertThat(indexPage.areBenefitIconsDisplayed()).as("Images aren't displayed").isTrue();
+        softly.assertThat(indexPage.getBenefitIconsCount()).as("Images count is incorrect")
+                .isEqualTo(EXPECTED_IMAGES_COUNT);
 
         // 7. Assert that there are 4 texts on the Index Page under icons, and they have proper text
         List<String> actualBenefitTexts = indexPage.getBenefitTexts();
@@ -46,26 +47,27 @@ public class Exercise1Test extends BaseTest {
                 "To be multiplatform",
                 "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…"
         );
-        softly.assertThat(indexPage.areBenefitTextsDisplayed()).as("Image texts display").isTrue();
-        softly.assertThat(actualBenefitTexts).as("Image texts").isEqualTo(expectedBenefitTexts);
+        softly.assertThat(indexPage.areBenefitTextsDisplayed()).as("Image texts aren't displayed").isTrue();
+        softly.assertThat(actualBenefitTexts).as("Image texts are incorrect").isEqualTo(expectedBenefitTexts);
 
         // 8. Assert that there is the iframe with “Frame Button” exist
-        softly.assertThat(indexPage.isFrameDisplayed()).as("Iframe display").isTrue();
+        softly.assertThat(indexPage.isFrameDisplayed()).as("Iframe isn't displayed").isTrue();
 
         // 9. Switch to the iframe and check that there is “Frame Button” in the iframe
         indexPage.switchToFrame();
-        softly.assertThat(indexPage.isFrameButtonDisplayed()).as("Frame button display").isTrue();
-        softly.assertThat(indexPage.getFrameButtonValue()).as("Frame button value").isEqualTo("Frame Button");
+        softly.assertThat(indexPage.isFrameButtonDisplayed()).as("Frame button isn't displayed").isTrue();
+        softly.assertThat(indexPage.getFrameButtonValue()).as("Frame button value is incorrect")
+                .isEqualTo("Frame Button");
 
         // 10. Switch to original window back
         indexPage.switchToDefault();
 
         // 11. Assert that there are 5 items in the Left Section are displayed, and they have proper text
-        List<String> actualLeftMenu = indexPage.leftSection().getLeftMenu();
+        List<String> actualLeftMenu = indexPage.getLeftSection().getLeftMenu();
         List<String> expectedLeftMenu = Arrays.asList("Home", "Contact form", "Service", "Metals & Colors",
                 "Elements packs");
-        softly.assertThat(indexPage.leftSection().isLeftMenuDisplayed()).as("Left menu display").isTrue();
-        softly.assertThat(actualLeftMenu).as("Left menu").isEqualTo(expectedLeftMenu);
+        softly.assertThat(indexPage.getLeftSection().isLeftMenuDisplayed()).as("Left menu isn't displayed").isTrue();
+        softly.assertThat(actualLeftMenu).as("Left menu is incorrect").isEqualTo(expectedLeftMenu);
 
         softly.assertAll();
     }

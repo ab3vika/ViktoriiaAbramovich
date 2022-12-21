@@ -16,16 +16,16 @@ public class Exercise2Test extends BaseTest {
         indexPage.openSite(properties.getProperty("url"));
 
         // 2. Assert Browser title
-        assertThat(indexPage.getTitle()).as("Browser title").isEqualTo("Home Page");
+        assertThat(indexPage.getTitle()).as("Browser title is incorrect").isEqualTo("Home Page");
 
         // 3. Perform login
-        indexPage.header().performLogin(properties.getProperty("username"), properties.getProperty("password"));
+        indexPage.getHeader().performLogin(properties.getProperty("username"), properties.getProperty("password"));
 
         // 4. Assert Username in the left-top side of screen that user is loggined
-        assertThat(indexPage.header().getUserName()).as("Username").isEqualTo("ROMAN IOVLEV");
+        assertThat(indexPage.getHeader().getUserName()).as("Username is incorrect").isEqualTo("ROMAN IOVLEV");
 
         // 5. Open through the header menu Service -> Different Elements Page
-        indexPage.header().goToDifferentElements();
+        indexPage.getHeader().goToDifferentElements();
         initializeDifferentElementsPage();
 
         // 6. Select checkboxes
@@ -42,9 +42,9 @@ public class Exercise2Test extends BaseTest {
         for each checkbox there is an individual log row and value is corresponded to the status of checkbox
         for radio button there is a log row and value is corresponded to the status of radio button
         for dropdown there is a log row and value is corresponded to the selected value. */
-        List<String> actualLogList = differentElementsPage.logs().getLogList();
+        List<String> actualLogList = differentElementsPage.getLogs().getLogList();
         List<String> expectedLogList = List.of("Colors: value changed to Yellow", "metal: value changed to Selen",
                 "Wind: condition changed to true", "Water: condition changed to true");
-        assertThat(actualLogList).as("Log list").isEqualTo(expectedLogList);
+        assertThat(actualLogList).as("Log list is incorrect").isEqualTo(expectedLogList);
     }
 }

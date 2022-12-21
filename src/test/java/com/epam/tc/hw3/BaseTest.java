@@ -14,7 +14,7 @@ import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
 
-    private static final String PATH = "src/test/resources/properties/Config.properties";
+    private static final String PATH = "src/test/resources/properties/config.properties";
     protected Properties properties;
     protected IndexPage indexPage;
     protected DifferentElementsPage differentElementsPage;
