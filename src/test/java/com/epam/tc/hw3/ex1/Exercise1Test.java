@@ -31,6 +31,7 @@ public class Exercise1Test extends BaseTest {
         // 5. Assert that there are 4 items on the header section are displayed, and they have proper texts
         List<String> actualMenuButtons = indexPage.getHeader().getMenuButtons();
         List<String> expectedMenuButtons = List.of("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
+        softly.assertThat(actualMenuButtons.size()).as("MenuButtons size is incorrect").isEqualTo(expectedMenuButtons.size());
         softly.assertThat(indexPage.getHeader().areMenuButtonsDisplayed()).as("Header items aren't displayed").isTrue();
         softly.assertThat(actualMenuButtons).as("Header items are incorrect").isEqualTo(expectedMenuButtons);
 
@@ -66,6 +67,7 @@ public class Exercise1Test extends BaseTest {
         List<String> actualLeftMenu = indexPage.getLeftSection().getLeftMenu();
         List<String> expectedLeftMenu = Arrays.asList("Home", "Contact form", "Service", "Metals & Colors",
                 "Elements packs");
+        softly.assertThat(actualLeftMenu.size()).as("LeftMenu size is incorrect").isEqualTo(expectedLeftMenu.size());
         softly.assertThat(indexPage.getLeftSection().isLeftMenuDisplayed()).as("Left menu isn't displayed").isTrue();
         softly.assertThat(actualLeftMenu).as("Left menu is incorrect").isEqualTo(expectedLeftMenu);
 
