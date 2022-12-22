@@ -54,25 +54,31 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.xml.file>OtherCalculatorTestSuite</suite.xml.file>
+                <suite.xml.file>otherCalculatorTestSuite</suite.xml.file>
             </properties>
         </profile>
         <profile>
             <id>Trigonometry</id>
             <properties>
-                <suite.xml.file>TrigonometryCalculatorTestSuite</suite.xml.file>
+                <suite.xml.file>trigonometryCalculatorTestSuite</suite.xml.file>
             </properties>
         </profile>
         <profile>
             <id>All</id>
             <properties>
-                <suite.xml.file>AllCalculatorTestSuite</suite.xml.file>
+                <suite.xml.file>allCalculatorTestSuite</suite.xml.file>
             </properties>
         </profile>
         <profile>
             <id>Hw2</id>
             <properties>
-                <suite.xml.file>Hw2Suite</suite.xml.file>
+                <suite.xml.file>hw2Suite</suite.xml.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>Hw3</id>
+            <properties>
+                <suite.xml.file>hw3Suite</suite.xml.file>
             </properties>
         </profile>
     </profiles>
@@ -108,7 +114,7 @@
                 <version>2.12.4</version>
                 <configuration>
                     <suiteXmlFiles>
-                        ${project.basedir}/src/test/resources/com.epam.tc.hw1/${suite.xml.file}.xml
+                        ${project.basedir}/src/test/resources/suites/${suite.xml.file}.xml
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
