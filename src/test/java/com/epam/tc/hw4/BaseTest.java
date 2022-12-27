@@ -1,4 +1,4 @@
-package com.epam.tc.hw3;
+package com.epam.tc.hw4;
 
 import com.epam.tc.hw3.pages.DifferentElementsPage;
 import com.epam.tc.hw3.pages.IndexPage;
@@ -9,6 +9,7 @@ import java.time.Duration;
 import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -21,11 +22,12 @@ public class BaseTest {
     private WebDriver webDriver;
 
     @BeforeMethod
-    public void setUp() {
+    public void setUp(ITestContext context) {
         WebDriverManager.chromedriver().setup();
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        context.setAttribute("driver", webDriver);
 
         try (FileInputStream fileInputStream = new FileInputStream(PATH)) {
             properties = new Properties();

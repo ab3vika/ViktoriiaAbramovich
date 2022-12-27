@@ -45,6 +45,23 @@
             <artifactId>selenium-java</artifactId>
             <version>4.7.1</version>
         </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.20.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.7.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.3.1</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <profiles>
@@ -79,6 +96,12 @@
             <id>Hw3</id>
             <properties>
                 <suite.xml.file>hw3Suite</suite.xml.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>Hw4</id>
+            <properties>
+                <suite.xml.file>hw4Suite</suite.xml.file>
             </properties>
         </profile>
     </profiles>
@@ -116,7 +139,22 @@
                     <suiteXmlFiles>
                         ${project.basedir}/src/test/resources/suites/${suite.xml.file}.xml
                     </suiteXmlFiles>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.9.1/aspectjweaver-1.9.9.1.jar"
+                    </argLine>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>1.9.9.1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.12.0</version>
             </plugin>
         </plugins>
     </build>
