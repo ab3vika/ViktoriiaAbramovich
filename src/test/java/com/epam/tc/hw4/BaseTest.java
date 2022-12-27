@@ -1,7 +1,7 @@
 package com.epam.tc.hw4;
 
-import com.epam.tc.hw3.pages.DifferentElementsPage;
-import com.epam.tc.hw3.pages.IndexPage;
+import com.epam.tc.hw4.steps.ActionStep;
+import com.epam.tc.hw4.steps.AssertStep;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -16,9 +16,9 @@ import org.testng.annotations.BeforeMethod;
 public class BaseTest {
 
     private static final String PATH = "src/test/resources/config.properties";
+    protected ActionStep actionStep;
+    protected AssertStep assertStep;
     protected Properties properties;
-    protected IndexPage indexPage;
-    protected DifferentElementsPage differentElementsPage;
     private WebDriver webDriver;
 
     @BeforeMethod
@@ -28,6 +28,8 @@ public class BaseTest {
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         context.setAttribute("driver", webDriver);
+        actionStep = new ActionStep(webDriver);
+        assertStep = new AssertStep(webDriver);
 
         try (FileInputStream fileInputStream = new FileInputStream(PATH)) {
             properties = new Properties();
@@ -37,17 +39,8 @@ public class BaseTest {
         }
     }
 
-    // 12/10. Close Browser
     @AfterMethod
     public void tearDown() {
         webDriver.quit();
-    }
-
-    public void initializeIndexPage() {
-        indexPage = new IndexPage(webDriver);
-    }
-
-    public void initializeDifferentElementsPage() {
-        differentElementsPage = new DifferentElementsPage(webDriver);
     }
 }
