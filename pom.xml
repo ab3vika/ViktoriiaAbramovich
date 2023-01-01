@@ -92,6 +92,18 @@
                 <suite.xml.file>hw4Suite</suite.xml.file>
             </properties>
         </profile>
+        <profile>
+            <id>Hw6</id>
+            <properties>
+                <suite.xml.file>hw6Suite</suite.xml.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>Hw6Remote</id>
+            <properties>
+                <suite.xml.file>hw6RemoteSuite</suite.xml.file>
+            </properties>
+        </profile>
     </profiles>
 
     <build>
